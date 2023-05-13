@@ -1,0 +1,11 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+.title{
+  font: Copperplate;
+  color: crimson;
+  margin: auto;
+}
+

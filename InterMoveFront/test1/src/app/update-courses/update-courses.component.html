@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-title><h2>Update Course</h2> </mat-card-title>
+  <hr class="hr" style="width: 80%;margin-left: auto;margin-right: auto;"/>
+
+<mat-card-content>
+  
+  <div class="from" >
+<div class="input-group mb-3" >
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" style="margin-bottom: 10px;"  [(ngModel)]="inputLabel">
+</div>
+<label class="form-label" for="customFile">Upload the course</label>
+<input type="file" class="form-control" id="customFile" style="margin-bottom: 10px;" />
+
+
+  <button mat-raised-button (click)="onsubmit()" class="button" style="    background-color: #a31717;  color:white; margin-bottom: 8%;">Submit</button>  
+  <div class="alert alert-success" role="alert" *ngIf="showSucc">
+      This is a success alert—check it out!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="showErr">
+      This is a danger alert—check it out!
+    </div>
+  </div>
+
+</mat-card-content>
+</mat-card>
+
+

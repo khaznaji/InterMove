@@ -1,0 +1,152 @@
+
+
+
+<body>
+  <section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Courses</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ***** Header Area Start ***** -->
+
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+
+  <!-- ***** Main Banner Area End ***** -->
+
+
+  <section id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+         
+          <div class="section-heading">
+            <h2>Udemy courses</h2>
+          </div>
+        </div>
+      
+        <div class="col-lg-4" *ngFor="let course of list_Ucourses" >
+          
+          <div class="categories">
+              <img src="{{course.image_480x270}}">
+            <h4 style="color: black;">{{ course.title }}</h4>
+            <ul>
+           Prix: {{course.price}}  
+             <!-- <li>{{ event.description }} </li> -->
+              <!-- <br>
+            Date Debut :   <li>{{ event.datedebut | date: 'dd/MM/yy' }}</li>
+              <br>
+
+              Date Fin :   <li>{{ event.datefin | date: 'dd/MM/yy' }}</li>
+              <br>
+
+         Domain :      <li>{{ event.domain }} </li> -->
+            </ul>
+            <!-- <button (click)="markAsInteressted(event.idoffre)" class="btn btn-info" style="margin-left: 10px">Mark as Interessant</button>
+      <button mat-button (click)="  submitCandidacy(event.idoffre) " style="margin-left: 10px;margin-top: 3px;">Participate	<mat-icon>done_all</mat-icon></button>
+            <button mat-button (click)="openDialog('angular')" style="margin-left: 10px;margin-top: 3px;">View Recomended courses</button> -->
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section  id="meetings">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+         
+          <div class="section-heading">
+            <h2>Free Courses</h2>
+          </div>
+        </div>
+      
+        <div class="col-lg-4" *ngFor="let course of list_courses">
+          <div   style="color: black; padding: auto;"class="categories" id="course3D">
+            <h4 style="color: black; padding: auto;">{{ course.name }}</h4>
+            <ul>
+            
+            <button mat-button  style="margin-left: 10px;margin-top: 3px;">View course!	<mat-icon>done_all</mat-icon></button>  
+             <!-- <li>{{ event.description }} </li> -->
+              <!-- <br>
+            Date Debut :   <li>{{ event.datedebut | date: 'dd/MM/yy' }}</li>
+              <br>
+
+              Date Fin :   <li>{{ event.datefin | date: 'dd/MM/yy' }}</li>
+              <br>
+
+         Domain :      <li>{{ event.domain }} </li> -->
+            </ul>
+            <!-- <button (click)="markAsInteressted(event.idoffre)" class="btn btn-info" style="margin-left: 10px">Mark as Interessant</button>
+      <button mat-button (click)="  submitCandidacy(event.idoffre) " style="margin-left: 10px;margin-top: 3px;">Participate	<mat-icon>done_all</mat-icon></button>
+            <button mat-button (click)="openDialog('angular')" style="margin-left: 10px;margin-top: 3px;">View Recomended courses</button> -->
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+

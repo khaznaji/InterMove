@@ -1,0 +1,100 @@
+
+      <!--      <div *ngIf="show">
+                <div class="card" id="pdff" #pdf>
+                  <h4 style="font-size: 20px; font-weight: bold; text-align: center;">Contart</h4>
+                  <h6>contrat start at : {{contratDetail?.description}}</h6>
+                  <h6>contrat end at : </h6>
+                  <h6>number of month : </h6>
+                  <h6>price : </h6>
+                  <h6>for mr/mme : .....................</h6>
+                </div>
+                <div>
+                  <button style="margin-top: 10px; margin-bottom: 10px;" (click)="loadPdfff()" class="btn btn-success">Download</button>
+                </div>
+              </div>-->
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Offers</h1>
+        <hr>
+        <a style="color: rgb(122, 124, 129);" routerLink="/addOffers" routerLinkActive="active" class="nav-item nav-link" data-bs-toggle="dropdown"><i class="fa fa-calendar"></i> Add Offer</a>
+
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche">
+
+        <div class="table-responsive">
+            <table class="table " style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>  
+                      
+                        <th scope="col">#</th>
+                        <th scope="col">titre</th>
+                       
+                        <th scope="col">Description</th>
+
+                        <th scope="col">Date debut</th>
+                        <th scope="col">Date fin</th>
+                        <th scope="col">domaine</th>
+
+
+                      
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        
+                        <tr *ngFor="let offer of offers | filter:searchText | paginate 
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
+                            
+
+
+                           
+                              
+
+
+
+
+
+
+                            
+                            <td>      {{ offer.idoffre }}    </td>
+                            <td>      {{ offer.titre }}    </td>
+                          
+                            <td>      {{ offer.description }}    </td>
+                            <td>{{ offer.datedebut | date: 'dd/MM/yy' }}</td>
+                            <td>{{ offer.datefin | date: 'dd/MM/yy' }}</td>
+                            <td>      {{ offer.domain }}    </td>
+
+                          
+                          <td> <button (click)="deleteEvent(offer.idoffre)" class="btn btn-danger">Delete</button>
+                            <button (click)="updateOffer(offer.idoffre)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                            <button class="btn btn-primary" (click)="downloadPdf(offer.idoffre)">PDF</button>
+                            <button class="btn btn-success"(click)="markAsHist(offer.idoffre)">Mark as History</button>      
+<!--                                                          <button (click)="markAsInteressted(offer.idoffre)" class="btn btn-info" style="margin-left: 10px">Mark as Interessant</button>
+ --><!--                                                          <button (click)="downloadPDF()">Download PDF</button>
+ -->                                                     
+                                                          
+    </tr>
+                                                         
+                                                          
+                   
+                   
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+              </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+
+<div>
+<a  style="color: rgb(122, 124, 129);" routerLink="/video" routerLinkActive="active" class="nav-item nav-link" data-bs-toggle="dropdown"><i class="fa fa-video"></i> Event</a>
+  <form (submit)="onSubmit2(link.value)" style="margin-left: 50px;">
+
+    <label  >Link:</label>
+    <input  class="form-control"  type="text" #link required>
+    <br>
+    <button  class="btn btn-success" type="submit">Generate QR Code</button>
+
+  </form>
+</div> <div style="display: flex; justify-content: flex-end; align-items: center;">
+ 
+<div class="container rounded h-100 p-4"[hidden]="submitted" style="width: 700px ">
+ 
+  <h1 style="color: rgb(107, 103, 103);">Add Event</h1>
+  <hr>
+ 
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">   
+        <label>Title</label>
+    <input type="text" class="form-control" id="firstName" required [(ngModel)]="events.title" name="firstName" #thisdescription="ngModel">
+    <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+        <div *ngIf="thisdescription?.errors?.['required']">Title is required!</div>
+    </div>
+    
+    <label>Description</label>
+    <textarea class="form-control" placeholder="Leave your description here"
+    id="floatingTextarea"  class="form-control" id="firstName" required [(ngModel)]="events.description" name="firstName" #thisdescription="ngModel">
+    <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+        <div *ngIf="thisdescription?.errors?.['required']">Description is required!</div>
+    </div>
+    </textarea>
+    <div class="mb-3">    <label>Start Date</label>
+      <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="events.dateD" name="dateF" required>
+      <bs-datepicker #dp></bs-datepicker>
+      
+          <label>End Date</label>
+          <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="events.dateF" name="dateF" required>
+          <bs-datepicker #dp></bs-datepicker>
+                </div>
+    <div class="mb-3">
+    <label>Number of Places</label>
+    <input type="number" class="form-control" [(ngModel)]="events.nbreDePlaces" name="nbreDePlaces" required #thisdescription="ngModel">
+    <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+        <div *ngIf="thisdescription?.errors?.['required']">Number of Places is required!</div>
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Image Event</label>
+        <input type="file" class="form-control" id="firstName" required (change)="onFileSelected($event)" name="image">
+      </div>
+      
+      <div class="mb-3">
+        <label for="formFile" class="form-label">QrCode</label>
+        <input type="file" class="form-control" id="firstName" required (change)="onFileSelected2($event)" name="image">
+      </div>
+    <label>Type of Event</label>
+    <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="events.typeEvent" name="typeEvent" required #thisdescription="ngModel">
+      <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+          <div *ngIf="thisdescription?.errors?.['required']">Type of Event is required!</div>
+      </div>
+      
+        <option>Workshop</option>
+        <option>Webinaire</option>
+
+    </select>
+    <br>
+
+    <label>Modality of Event</label>
+    <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="events.modaliteEvent" name="modaliteEvent" required #thisdesscription="ngModel">
+     <br> <div class="alert alert-danger" *ngIf="thisdesscription.touched && thisdesscription.invalid">
+          <div *ngIf="thisdesscription?.errors?.['required']">Modality of Event is required!</div>
+      </div>
+      
+        <option>Presentiel</option>
+        <option>Distanciel</option>  
+    </select>
+    <br>
+    <button class="btn btn-outline-primary w-100 m-2" type="submit" >Save Event</button>
+
+  </form>

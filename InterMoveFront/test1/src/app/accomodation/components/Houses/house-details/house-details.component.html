@@ -1,0 +1,172 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentHouse.id" class="view">
+      <h4 >House</h4>
+      <div>
+        <label class="view-label"><strong>Type:</strong></label> {{ currentHouse.type_houses }}
+      </div>
+      <div>
+        <label class="view-label"><strong>Country:</strong></label>
+        {{ currentHouse.country }}
+      </div>
+      <div>
+        <label class="view-label"><strong>Title:</strong></label>
+        {{ currentHouse.title }}
+      </div>
+      
+  
+      <a 
+        class="badge badge-warning"
+        routerLink="/houses/{{ currentHouse.id }}"
+      >
+        <p color="black">Edit</p>
+      </a>
+    </div>
+  
+    <div *ngIf="!currentHouse">
+      <br />
+      <p>Please click on a House...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentHouse.id" class="edit-form">
+      <h4 class="title">House</h4>
+      <form>
+
+        <div class="form__group field">
+          <label for="description">Title</label>
+          <input
+            class="form__field" placeholder="Name"
+            id="description"
+            required
+            [(ngModel)]="currentHouse.title"
+            name="title"
+          />
+        </div>
+
+        <div class="form__group field">
+          <label for="description">House type</label><br>
+            <select [(ngModel)]="currentHouse.type_houses" name="type_houses">
+                <option *ngFor="let fileType of Types"
+          [value]="fileType">
+    {{HouseType2LabelMapping[fileType]}}
+  </option>
+            </select>
+        </div>
+        <div class="form__group field">
+          <label for="description">Country</label>
+          <input
+            type="text"
+            class="form__field" placeholder="Name"
+            id="description"
+            [(ngModel)]="currentHouse.country"
+            name="description"
+          />
+        </div>
+        <div class="form__group field">
+            <label for="description">Region</label>
+            <input
+              class="form__field" placeholder="Name"
+              id="description"
+              required
+              [(ngModel)]="currentHouse.region"
+              name="region"
+            />
+          </div>
+          <div class="form__group field">
+            <label for="description">Address</label>
+            <input
+              class="form__field" placeholder="Name"
+              id="description"
+              required
+              [(ngModel)]="currentHouse.adress"
+              name="adress"
+            />
+          </div>
+          <div class="form__group field">
+            <label for="description">Loyer</label>
+            <input
+              class="form__field" placeholder="Name"
+              id="description"
+              required
+              [(ngModel)]="currentHouse.loyer"
+              name="loyer"
+            />
+          </div>
+          <div class="form__group field">
+            <label for="description">Number of rooms</label>
+            <input
+              class="form__field" placeholder="Name"
+              id="description"
+              required
+              [(ngModel)]="currentHouse.nbrOfRooms"
+              name="nbrOfRooms"
+            />
+          </div>
+        <div class="form__group field">
+        <label for="description">House type</label><br>
+        <label for="description">Agency</label><br>
+          <select [(ngModel)]="currentHouse.agencyName" name="agencyName">
+          <option *ngFor="let agency of agencies" [value]="agency.name">
+              {{agency.name}}
+            </option>
+          </select>
+      </div>
+
+      <div class="form__group field">
+        <label for="title">About Us</label>
+        <textarea
+          type="text"
+          class="form__field" placeholder="Name"
+          id="title"
+          required
+          name="title"
+          [(ngModel)]="currentHouse.description"
+        >
+        </textarea>
+      </div>
+
+
+      <div class="form__group field">
+        <input type="file" (change)="onImageUpload($event)">
+        <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1">
+    </div>
+  
+  
+    <div>
+        <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
+    </div>
+    <br>
+  
+    
+        
+      </form>
+
+      <div>
+  <gallery [items]="images"></gallery>
+    </div>
+
+<br>
+
+      
+  
+      <button class="btn btn-outline-danger m-3" (click)="deleteHouse()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="btn btn-outline-success "
+        (click)="updateHouse()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentHouse.id">
+      <br />
+      <p>Cannot access this House...</p>
+    </div>
+  </ng-template>
+  

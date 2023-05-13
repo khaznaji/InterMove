@@ -1,0 +1,91 @@
+
+<div style="display: flex; justify-content: flex-end; align-items: center;">
+ 
+  <div class="container rounded h-100 p-4"[hidden]="submitted" style="width: 700px ">
+   
+    <h1 style="color: rgb(107, 103, 103);">Add Agency</h1>
+    <hr>
+<form [formGroup]="form">
+<div>
+  
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div  class="form-control">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          id="title"
+          required
+          [formControl]="name"
+          name="title"
+          [(ngModel)]="agency.name"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="description" class="form__label">Country</label><br>
+        <select
+        [formControl]="country"
+        name="country"
+        
+        [(ngModel)]="agency.country"
+      >
+        <option *ngFor="let country of countries" [value]="country.shortName">
+          {{ country.name }}
+        </option>
+      </select>
+      <p *ngIf="country.hasError('required')"
+        >Please select a country.</p>
+      </div>
+      <div class="form-control">
+        <label for="region" class="form__label">State</label><br>
+        <select
+        [formControl]="state"
+        name="region"
+        [(ngModel)]="agency.region"
+      >
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+      <p *ngIf="state.hasError('required')">Please select a state.</p>
+      </div>
+      <div class="form-control">
+        <label for="adress" class="form__label">City</label><br>
+        <select [formControl]="city" name="city" [(ngModel)]="agency.adress">
+          <option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </option>
+        </select>
+        <p *ngIf="city.hasError('required')"
+          >Please select a city.</p>
+      </div>
+
+      <div class="form-control">
+        <label for="title" class="form__label">About Us</label>
+        <textarea
+          type="text"
+          class="form__label"
+          placeholder="About us"
+          rows="4"
+          id="title"
+          required
+          [formControl]="aboutUs"
+          name="title"
+          [(ngModel)]="agency.aboutUs"
+        >
+        </textarea>
+      </div>
+    
+<br>
+      <button (click)="saveAgency()" class="btn btn-outline-primary w-100 m-2" >Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Agency was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newAgency()">Add</button>
+      <button class="btn btn-info" routerLink="/listAgencies">Agencies list</button>
+    </div>
+  </div>
+</div>
+</form>

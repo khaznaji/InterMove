@@ -1,0 +1,45 @@
+
+<div class="col-12">
+  <div class=" rounded h-100 p-4">
+      <h1 class="mb-4" style="color: rgb(107, 103, 103);">Agents List</h1>
+      <hr>
+
+
+      <input
+      class="form__field"
+      
+  type="text"
+  [(ngModel)]="searchString"
+  placeholder="Search by name or country"
+/>
+
+<label class="form__label">Search</label>
+    
+  <br>
+  <br>
+
+    <div class="col-md-10">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let agent of agents | searchName: searchString; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveAgency(agent, i)"
+        >
+          {{ agent.name }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-outline-danger" (click)="removeAllAgencys()">
+        Remove All
+      </button>
+      <button class="btn btn-outline-primary" routerLink="/addAgent" routerLinkActive="active">Add Agent</button>
+    </div>
+    <div class="col-md-6">
+      <app-agent-details
+        [viewMode]="true"
+        [currentAgent]="currentAgent"
+      ></app-agent-details>
+    </div>
+  </div>
+  

@@ -1,0 +1,44 @@
+.mat-form-field {
+    width: 100%;
+    min-width: 500px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+.button {
+    margin-left: 15px;
+    margin-right: auto;
+    margin-top: 10px; 
+    width: 90%;
+   
+  
+  }
+
+  mat-card{
+    display: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    height: 600px;
+  }
+  h2{
+    margin-top: 10%;
+    color: #a31717;
+    margin-bottom: 5px;
+  }
+  mat-card-content{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+  }

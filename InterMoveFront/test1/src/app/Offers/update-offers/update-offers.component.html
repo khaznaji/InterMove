@@ -1,0 +1,31 @@
+
+
+
+                <div class="container rounded h-100 p-4" style="width: 700px ">
+                    <h1 style="color: rgb(107, 103, 103);">Add Offer</h1>
+                    <hr>    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">    <label>Title</label>
+    <input type="text" class="form-control" id="titre" required [(ngModel)]="offer.titre" name="titre">
+    
+    <label>Description</label>
+    <input type="text" class="form-control" id="description" required [(ngModel)]="offer.description" name="description">
+<br>
+    <label>Start Date</label>
+    <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="offer.datedebut" name="dateF" required>
+    <bs-datepicker #dp></bs-datepicker>
+<br>
+          <label>End Date</label>
+    <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="offer.datefin" name="dateF" required>
+    <bs-datepicker #dp></bs-datepicker>
+  <br>
+    <label>Type Offer</label>
+    <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="offer.domain" name="domain" required>
+        <option>Informatique</option>
+        <option>Marketing</option>
+
+    </select>
+    
+   
+    
+    <button class="btn btn-outline-primary w-100 m-2" type="submit" >Update Offer</button>
+
+  </form>

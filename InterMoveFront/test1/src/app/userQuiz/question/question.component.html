@@ -1,0 +1,29 @@
+
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <section class="heading-page header-text" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Time For Questions</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="quiz-container">
+    <p [ngStyle]="{'color': color === 'green' ? 'green' : 'red', 'border': '1px solid black', 'border-radius': '5px', 'padding': '5px', 'font-weight': 'bold'}">
+      Time left: {{ timeLeft$ | async }}
+    </p>  
+    <div class="question" *ngFor="let question of questions; let i = index">
+      <div class="question-text">{{question.question}}</div>
+      <div class="responses">
+        <div class="response" *ngFor="let response of question.responses; let j = index">
+          <label class="response-text">{{response}}</label>
+          <input type="checkbox" class="response-input">
+        </div>
+      </div>
+      <button class="submit-btn" *ngIf="!question.submitted" (click)="submitQuestion(i,question.id)">Submit</button>
+    </div>
+    <button class="submit-btn" (click)="finish()">finish</button>
+  </div>

@@ -1,0 +1,60 @@
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Courses</h1>
+        <hr>
+        <a style="color: rgb(122, 124, 129);"  [routerLink]="['/courses/add']"  routerLinkActive="active" class="nav-item nav-link"
+            data-bs-toggle="dropdown"> <i class="fas fa-university"></i>
+            Add Courses</a>
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche">
+
+
+<div class="container">
+        <div class="table-responsive">
+            <table class="table " style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                    <tr *ngFor="let course of list_courses | filter:searchText
+                        
+                    let i = index">
+                        <td> {{ course.name }} </td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                        <td> <button (click)="deleteCourse(course.idCourse)" class="btn btn-danger">Delete</button>
+
+                            <button [routerLink]="['/courses/update',course.idCourse]" class="btn btn-info"
+                                style="margin-left: 10px">Update</button>
+                            <!--                                                          <button (click)="markAsInteressted(offer.idoffre)" class="btn btn-info" style="margin-left: 10px">Mark as Interessant</button>
+ --><!--                                                          <button (click)="downloadPDF()">Download PDF</button>
+ -->
+
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    </div>
+</div>

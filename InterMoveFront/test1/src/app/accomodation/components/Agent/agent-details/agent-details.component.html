@@ -1,0 +1,111 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentAgent.id" class="view">
+      <h4>Agent</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentAgent.name }}
+      </div>
+      <div>
+        <label><strong>Number:</strong></label>
+        {{ currentAgent.number }}
+      </div>
+      <div>
+        <label><strong>Agency:</strong></label>
+        {{ currentAgent.agencyName }}
+      </div>
+      
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/agents/{{ currentAgent.id }}"
+      >
+      <p color="black">Edit</p>
+      </a>
+    </div>
+  
+    <div *ngIf="!currentAgent">
+      <br />
+      <p>Please click on a Agent...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentAgent.id" class="edit-form">
+      <h4>Agent</h4>
+      <form>
+        <div class="form__group field">
+          
+          <input
+            type="text"
+            class="form__field" placeholder="Name"
+            id="title"
+            [(ngModel)]="currentAgent.name"
+            name="title"
+          /><label for="title" class="form__label">Name</label>
+        </div>
+        <div class="form__group field">
+          <label for="description" class="form__label">Number</label>
+          <input
+            type="text"
+            class="form__field" placeholder="Number"
+            id="description"
+            [(ngModel)]="currentAgent.number"
+            name="description"
+          />
+        </div>
+        <div class="form__group field">
+          <label for="Agency" class="form__label">Agency</label><br>
+          <select [(ngModel)]="currentAgent.agencyName" name="agencyName">
+          <option *ngFor="let agency of agencies" [value]="agency.name">
+              {{agency.name}}
+            </option>
+          </select>
+      </div>
+
+      <div class="form__group field">
+        <label for="description" class="form__label">Email</label>
+        <input
+          class="form__field" placeholder="Email"
+          id="description"
+          required
+          [(ngModel)]="currentAgent.email"
+          name="email"
+        />
+        </div>
+  
+      <div class="form__group field">
+        <label for="title" class="form__label">About me</label>
+        <textarea
+          type="text"
+          class="form__field" 
+          id="title"
+          required
+          name="title"
+          [(ngModel)]="currentAgent.description"
+        >
+        </textarea>
+      </div>
+      
+        
+      </form>
+      
+  
+      <button class="btn btn-outline-danger m-3" (click)="deleteAgent()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="btn btn-outline-success "
+        (click)="updateAgent()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentAgent.id">
+      <br />
+      <p>Cannot access this Agent...</p>
+    </div>
+  </ng-template>
+  

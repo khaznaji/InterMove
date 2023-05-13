@@ -1,0 +1,24 @@
+.edit-form {
+  max-width: 400px;
+  margin: auto;
+}
+.view {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: auto;
+  text-align: center;
+  max-width: 250px;
+  height: auto;background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
+  margin-top: 50px;
+  border: 5px;
+  border-color: black;
+
+}
+.view-label {
+  color: black;
+  text-align: center;
+}
+.title{
+  font: Copperplate;
+  color: rgb(255, 61, 100);
+  margin: auto;
+}

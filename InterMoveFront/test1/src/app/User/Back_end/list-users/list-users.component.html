@@ -1,0 +1,73 @@
+
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Users</h1>
+        <hr>
+        <a style="color: rgb(122, 124, 129);" routerLink="/add_user_back" routerLinkActive="active" class="nav-item nav-link" data-bs-toggle="dropdown"><i
+            class="fa fa-user"></i> Add User</a>
+
+        <div class="table-responsive">
+            <table class="table ">
+                <div class="table-responsive">
+                    <table class="table " style="color: rgb(107, 103, 103);">
+                        <thead>
+                            <tr> 
+                    <th scope="col">#</th>
+                    <th scope="col" style="color: white;">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Cin</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let user of userDetails">
+                    <td>{{user.userid}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.cin}}</td>
+                    <td>{{user.phone}}</td>
+    
+                    <td><button (click)="openForm(user)" type="button" class="btn btn-danger" >Edit</button></td>
+                    <td><button type="button" class="btn btn-danger" (click)="deleteUser(user)">Delete</button></td>
+                </tr>
+    
+    
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-wrapper" *ngIf="showForm">
+        <div class="mobileForm">
+            <div class="group">
+                <label for="mobile">userId</label>
+                <input type="text" class="form-control" [(ngModel)]="studentToUpdate.userid" name="userid" >
+            </div>
+     
+            <div class="group">
+                <label for="mobile">Email</label>
+                <input type="text" class="form-control" [(ngModel)]="studentToUpdate.email" name="email" required
+                    minlength="5">
+            </div>
+        
+            <div class="action">
+                <button class="btn btn-primary save" (click)="updateUser()">Save Changes</button>
+                <button class="btn btn-danger cancel" (click)="closeForm()">Cancel</button>
+            </div>
+        </div>
+    </div>
+   
+    
+                <!-- Blank Start -->
+               
+                <!-- Blank End -->
+    
+    
+                
+                <!-- Footer End -->
+       
+
+

@@ -1,0 +1,66 @@
+
+
+
+    <section class="heading-page header-text" id="top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Candidacy</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section  id="meetings">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+           <br>
+            <div class="section-heading">
+              <h2 style="color: black;">My Candidacies</h2>
+            </div>
+          </div>
+        
+          <!-- <div class="col-lg-4" >
+            
+            <div class="categories">
+              <h4>aaa</h4>
+              <ul>
+              
+              <button mat-button  style="margin-left: 10px;margin-top: 3px;">View course!	<mat-icon>done_all</mat-icon></button>  
+
+              </ul>
+
+            </div>
+          </div> -->
+
+          <mat-card class="example-card" style="margin-bottom: 20px;" *ngFor="let c of list_candidacy">
+            <mat-card-header>
+              <mat-card-subtitle>{{c.dateCandidacy}}</mat-card-subtitle>
+              <mat-card-title>c.</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>This card has divider and indeterminate progress as footer</p>
+              <p>test</p>
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+                
+              <button mat-button (click)="assignDocument(c.idC)">LIKE</button>
+              <input type="file" class="form-control" style=" width:50%"(change)="onFileSelected($event)"/>
+
+            </mat-card-actions>
+            <mat-card-footer>
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>
+
+    
+         
+        </div>
+      </div>
+    </section>
+    
+  
+   
+  

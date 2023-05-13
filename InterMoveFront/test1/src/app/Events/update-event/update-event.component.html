@@ -1,0 +1,68 @@
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">    
+      <div class="container rounded h-100 p-4" style="width: 700px ">
+        <h1 style="color: rgb(107, 103, 103);">Update Event</h1>
+        <hr>
+      
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">   
+            <label>Title</label>
+            <input type="text" class="form-control" id="firstName" required [(ngModel)]="event.title" name="firstName" #thisdescription="ngModel">
+            <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                <div *ngIf="thisdescription?.errors?.['required']">Title is required!</div>
+            </div>
+            
+            <label>Description</label>
+            <textarea class="form-control" placeholder="Leave your description here"
+            id="floatingTextarea"  class="form-control" id="firstName" required [(ngModel)]="event.description" name="firstName"#thisdescription="ngModel">
+            <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                <div *ngIf="thisdescription?.errors?.['required']">Description is required!</div>
+            </div>
+            </textarea>
+            <div class="mb-3">    <label>Start Date</label>
+              <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="event.dateD" name="dateF" required>
+              <bs-datepicker #dp></bs-datepicker>
+              
+                  <label>End Date</label>
+                  <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="event.dateF" name="dateF" required>
+                  <bs-datepicker #dp></bs-datepicker>
+                        </div>
+            <div class="mb-3">
+            <label>Number of Places</label>
+            <input type="number" [(ngModel)]="event.nbreDePlaces" name="nbreDePlaces" required #thisdescription="ngModel">
+            <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                <div *ngIf="thisdescription?.errors?.['required']">Number of Places is required!</div>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image Event</label>
+                <input type="file" class="form-control" id="firstName" required (change)="onFileSelected($event)" name="image">
+              </div>
+              
+              <div class="mb-3">
+                <label for="formFile" class="form-label">QrCode</label>
+                <input type="file" class="form-control" id="firstName" required (change)="onFileSelected2($event)" name="image">
+              </div>
+            <label>Type of Event</label>
+            <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="event.typeEvent" name="typeEvent" required #thisdescription="ngModel">
+              <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                  <div *ngIf="thisdescription?.errors?.['required']">Type of Event is required!</div>
+              </div>
+              
+                <option>Workshop</option>
+                <option>Webinaire</option>
+        
+            </select>
+            <br>
+        
+            <label>Modality of Event</label>
+            <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="event.modaliteEvent" name="modaliteEvent" required #thisdescription="ngModel">
+              <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                  <div *ngIf="thisdescription?.errors?.['required']">Modality of Event is required!</div>
+              </div>
+              
+                <option>Presentiel</option>
+                <option>Distanciel</option>  
+            </select>
+            <br>
+            <button class="btn btn-outline-primary w-100 m-2" type="submit" >Update Event</button>
+        
+          </form>

@@ -1,0 +1,116 @@
+
+
+<div class="row myrow">
+    <form #questionForm="ngForm" >
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">Add Questions</h1>
+<hr>
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" [(ngModel)]="question.question" class="form-control"
+                required minlength="3" #thisQuestion="ngModel">
+            <div class="alert alert-danger" *ngIf="thisQuestion.touched && thisQuestion.invalid">
+                <div *ngIf="thisQuestion?.errors?.['required']">Question is required!</div>
+                <div *ngIf="thisQuestion.errors?.['minlength']">Question must have at least 3 characters.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <select class="form-control" name="type" [(ngModel)]="question.type">
+                <option class="option" *ngFor="let type of types" [value]="type">{{type}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="questionNote">Question Note:</label>
+            <input type="number" id="questionNote" name="questionNote" [(ngModel)]="question.questionNote"
+                class="form-control" required min="0" #thisQuestionNote="ngModel">
+            <div class="alert alert-danger" *ngIf="thisQuestionNote.touched && thisQuestionNote.invalid">
+                <div *ngIf="thisQuestionNote.errors?.['required']">Question note is required!</div>
+                <div *ngIf="thisQuestionNote.errors?.['min']">Question note must be at least 0.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="responses">Responses:</label>
+            <input type="text" id="responses" name="responses" [(ngModel)]="response" class="form-control"
+                required #thisResponses="ngModel">
+                <div class="responses-container">
+                    <pre *ngFor="let response of responseList" class="response">{{ response }}</pre>
+                  </div>
+                  <br>
+                <button type="submit" class="btn btn-primary mybutton"  (click)="addResponses(response)">add Responses</button>
+                <button type="submit" class="btn btn-primary mybutton"  (click)="clearResponses()">clear all</button>
+              
+            <div class="alert alert-danger" *ngIf="!responseList[0] && thisResponses.touched">
+                <div *ngIf="thisResponses?.errors?.['required']">Responses are required!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="correctResponsesIndex">Correct Responses Index:</label>
+            <input type="number" id="correctResponsesIndex" name="correctResponsesIndex"
+                [(ngModel)]="correctResponsesIndex" class="form-control" required
+                #thisCorrectResponsesIndex="ngModel">
+                <div class="responses-container">
+                    <pre *ngFor="let correctResponses of correctResponsesList" class="response">{{ correctResponses }}</pre>
+                  </div>
+                  <br>
+                <button type="submit" class="btn btn-primary mybutton"  (click)="addCorrectResponses(correctResponsesIndex)">add Correct Responses</button>
+                <button type="submit" class="btn btn-primary mybutton"  (click)="clearCorrectResponses()">clear all</button>
+            <div class="alert alert-danger"
+                *ngIf="thisCorrectResponsesIndex.touched && !correctResponsesList[0]">
+                <div *ngIf="thisCorrectResponsesIndex?.errors?.['required']">Correct responses index is required!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="type">Quiz:</label>
+            <select class="form-control" name="type" [(ngModel)]="question.quiz_id">
+                <option class="option" *ngFor="let quiz of quizs" [value]="quiz.id">{{quiz.nom}}</option>
+            </select>
+        </div>
+        <!-- <div class="form-group">
+            <label for="Question">Question:</label>
+            <select class="form-control" name="Question" [(ngModel)]="question.Question">
+                <option class="option" *ngFor="let Question of quizzes" [value]="Question.id">{{Question.description}}</option>
+            </select>
+        </div> -->
+        <button type="submit" class="btn btn-primary mybutton"  (click)="addOrEditQuestion(question)">save question</button>
+    </form>
+  
+</div>
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Events</h1>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table" style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>
+
+                        <th scope="col">#</th>
+                        <th scope="col">question</th>
+                        <th scope="col">type</th>
+                        <th scope="col">questionNote</th>
+                        <th scope="col">responses</th>
+                        <th scope="col">correctResponsesIndex</th>
+                        <!-- <th scope="col">quiz id</th> -->
+                        <th scope="col">studentResponses</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <tr *ngFor="let Question of questions">
+                        <td> {{ Question.id }} </td>
+                        <td> {{ Question.question }} </td>
+                        <td> {{ Question?.type }} </td>
+                        <td> {{ Question?.questionNote }} </td>
+                        <td> <pre *ngFor="let responses of Question?.responses">{{ responses }}</pre> </td>
+                        <td> <pre *ngFor="let correctResponsesIndex of Question?.correctResponsesIndex">{{ correctResponsesIndex }}</pre> </td>
+                        <!-- <td> {{ Question.quiz_id }} </td> -->
+                        <td> <pre *ngFor="let studentResponses of Question?.studentResponses">{{ studentResponses }}</pre> </td>
+                        <td> <button (click)="deleteQuestion(Question.id)" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            
+            <!-- Navbar End -->
+<div>
+            <form style="color: black;" name="signupForm" (ngSubmit)="doSignup()">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First name</label>
+                    <input [(ngModel)]="User.firstname" name="firstname" type="email" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Lastname</label>
+                    <input [(ngModel)]="User.lastname" name="lastname" type="email" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Password</label>
+                    <input [(ngModel)]="User.password" type="email" name="password" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input [(ngModel)]="User.email" type="email" name="email" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Cin</label>
+                    <input [(ngModel)]="User.cin" type="email" name="cin" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Address</label>
+                    <input [(ngModel)]="User.address" type="email" name="address" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Phone number</label>
+                    <input [(ngModel)]="User.phone" type="email" name="phone" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+            <!-- Blank Start -->
+            <div class="container-fluid pt-4 px-4">
+                <router-outlet></router-outlet>
+
+                <div class="row vh-100  rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-6 text-center">
+
+                    </div>
+                </div>
+            </div>
+            <!-- Blank End -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+   

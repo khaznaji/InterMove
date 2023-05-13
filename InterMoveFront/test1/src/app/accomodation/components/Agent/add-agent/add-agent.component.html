@@ -1,0 +1,79 @@
+
+<div style="display: flex; justify-content: flex-end; align-items: center;">
+ 
+  <div class="container rounded h-100 p-4"[hidden]="submitted" style="width: 700px ">
+   
+    <h1 style="color: rgb(107, 103, 103);">Add Agent</h1>
+    <hr>
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form__group field">
+          <input
+            type="text"
+            class="form-control" placeholder="Name"
+            id="title"
+            required
+            [(ngModel)]="agent.name"
+            name="title"
+          />
+        </div>
+  <br>
+        <div class="form__group field">
+          <label for="description" class="form__label">Number</label>
+          <input
+            type="tel"
+            placeholder="123-45-678" pattern="[0-9]{8}"
+            class="form-control" placeholder="Number"
+            id="description"
+            required
+            [(ngModel)]="agent.number"
+            name="country"
+          />
+        </div>
+        <div class="form__group field">
+          <label for="Agency" class="form__label">Agency</label><br>
+        
+        <select class="form-control" [(ngModel)]="agent.agency">
+        <option *ngFor="let agency of agencies" [value]="agency.id" >
+            {{agency.name}}
+          </option>
+        </select>
+    </div>
+<br>
+    <div class="form__group field">
+      
+      <input
+      class="form-control" placeholder="Email"
+        id="description"
+        required
+        [(ngModel)]="agent.email"
+        name="email"
+      />
+      </div>
+<br>
+    <div class="form__group field">
+      
+      <textarea
+        type="text"
+        class="form-control" placeholder="About me"
+        id="title"
+        required
+        name="title"
+        [(ngModel)]="agent.description"
+      >
+      </textarea>
+    </div>
+        <br>
+  
+        <button (click)="saveAgent()" class="btn btn-outline-primary w-100 m-2">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Agent was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newAgent()">Add</button>
+        <button class="btn btn-info" routerLink="/listAgents">Agents list</button>
+      </div>
+    </div>
+  </div>
+  

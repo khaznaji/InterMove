@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knn </title>
+</head>
+<body>
+  <table border="1">
+      <tr>
+        <th>Regression Model</th>
+        <th>R<sup>2</sup> Score</th>
+        <th>Mean Absolute Error</th>
+        <th>Mean Squared Error</th>
+        <th>Root Mean Squared Error</th>
+      </tr>
+      {% for score in scores %}
+        <tr>
+            <td>{{ score.0 }}</td>
+            <td>{{ score.1 }}</td>
+            <td>{{ score.2 }}</td>
+            <td>{{ score.3 }}</td>
+            <td>{{ score.4 }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <h2>KNN</h2>
+    <figure>
+      <img src="data:image/png;base64,{{ graphic }}" />
+    </figure>
+</aside>
+  </body>
+</html>

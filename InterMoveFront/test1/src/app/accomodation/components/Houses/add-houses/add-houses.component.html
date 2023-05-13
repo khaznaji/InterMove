@@ -1,0 +1,127 @@
+
+<div style="display: flex; justify-content: flex-end; align-items: center;">
+ 
+  <div class="container rounded h-100 p-4"[hidden]="submitted" style="width: 700px ">
+   
+    <h1 style="color: rgb(107, 103, 103);">Add House</h1>
+    <hr><div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form__group field">
+          
+          <input
+            class="form__field"
+            id="description"
+            required
+            [(ngModel)]="house.title"
+            name="title"
+            placeholder="Title"
+          /><label for="description" class="form__label">Title</label>
+        </div>
+
+        <div class="form__group field">
+          <label for="description" class="form__label">House type</label><br>
+            <select [(ngModel)]="house.type_houses" name="type_houses">
+                <option *ngFor="let fileType of Types"
+          [value]="fileType">
+    {{HouseType2LabelMapping[fileType]}}
+  </option>
+            </select>
+        </div><br>
+        <div class="form__group field">
+          <label for="description" class="form__label">Country</label><br>
+          <select
+          [formControl]="country"
+          name="country"
+          
+          [(ngModel)]="house.country"
+        >
+          <option *ngFor="let country of countries" [value]="country.shortName">
+            {{ country.name }}
+          </option>
+        </select>
+        <p *ngIf="country.hasError('required')"
+          >Please select a country.</p>
+        </div>
+        <div class="form__group field">
+          <label for="region" class="form__label">State</label><br>
+          <select
+          [formControl]="state"
+          name="region"
+          [(ngModel)]="house.region"
+        >
+          <option *ngFor="let state of states" [value]="state">
+            {{ state }}
+          </option>
+        </select>
+        <p *ngIf="state.hasError('required')">Please select a state.</p>
+        </div>
+        <div class="form__group field">
+          <label for="adress" class="form__label">City</label><br>
+          <select [formControl]="city" name="city" [(ngModel)]="house.adress">
+            <option *ngFor="let city of cities" [value]="city">
+              {{ city }}
+            </option>
+          </select>
+          <p *ngIf="city.hasError('required')"
+            >Please select a city.</p>
+        </div>
+        <div class="form__group field">
+          
+          <input
+            class="form__field"
+            id="description"
+            required
+            [(ngModel)]="house.loyer"
+            name="loyer"
+          /><label for="description" class="form__label">Rent</label>
+        </div>
+        <div class="form__group field">
+          
+          <input
+            class="form__field"
+            id="description"
+            required
+            [(ngModel)]="house.nbrOfRooms"
+            name="nbrOfRooms"
+            placeholder="Number of Rooms"
+          /><label for="description" class="form__label">Number of Rooms</label>
+        </div>
+        <div class="form__group field">
+          <label for="description" class="form__label">Agency</label><br>
+        <select [(ngModel)]="house.agency" name="agencyName">
+        <option *ngFor="let agency of agencies" [value]="agency.id" >
+            {{agency.name}}
+          </option>
+        </select>
+    </div>
+    <div class="form__group field">
+      <label for="title" class="form__label">About Us</label>
+      <textarea
+        type="text"
+        class="form__field"
+        id="title"
+        required
+        [formControl]="description"
+        name="title"
+        [(ngModel)]="house.description"
+      >
+      </textarea>
+    </div><br>
+
+
+    
+        
+  
+        <button (click)="saveHouse()"  class="btn btn-outline-primary w-100 m-2">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>House was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newHouse()">Add</button>
+        <button class="btn btn-info" routerLink="/listHouses">Houses list</button>
+    </div>
+    </div>
+  </div>
+  

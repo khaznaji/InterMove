@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "file",
+      "type": "com.example.intermove.Proprety.FileStorageProperties",
+      "sourceType": "com.example.intermove.Proprety.FileStorageProperties"
+    },
+    {
+      "name": "twilio",
+      "type": "com.example.intermove.Configurations.TwilioConfig",
+      "sourceType": "com.example.intermove.Configurations.TwilioConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "file.upload-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.example.intermove.Proprety.FileStorageProperties"
+    },
+    {
+      "name": "twilio.account-sid",
+      "type": "java.lang.String",
+      "sourceType": "com.example.intermove.Configurations.TwilioConfig"
+    },
+    {
+      "name": "twilio.auth-token",
+      "type": "java.lang.String",
+      "sourceType": "com.example.intermove.Configurations.TwilioConfig"
+    },
+    {
+      "name": "twilio.from-phone-number",
+      "type": "java.lang.String",
+      "sourceType": "com.example.intermove.Configurations.TwilioConfig"
+    }
+  ],
+  "hints": []
+}

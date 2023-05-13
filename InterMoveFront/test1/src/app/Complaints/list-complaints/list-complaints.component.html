@@ -1,0 +1,62 @@
+
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Complaints</h1>
+        <hr>
+        
+          <select class="form-select form-select-sm mb-3"  aria-label=".form-select-sm example" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+            <option  value=""selected>All</option>
+            <option value="true">Reclamations Traitees</option>
+            <option value="false">Reclamations Non Traitees</option>
+        </select>
+        <div class="table-responsive" >
+          
+            <table class="table" style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>  
+                      
+                        <th scope="col" >#</th>
+                        <th scope="col" >Objet</th>
+                        <th scope="col" >Mssage</th>
+                        <th scope="col" >Image</th>
+                        <th scope="col">TypeClaim</th>
+
+
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+
+                        <th scope="col">Action</th>
+                        <th scope="col">Traitement</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr *ngFor="let claim of filteredComplaints">
+                            <td>      {{ claim.id }}    </td>
+                            <td>      {{ claim.objet }}    </td>
+                            <td>      {{ claim.message }}    </td>
+                            <td><img src="assets/img/{{ claim.image  }}" width="200px"></td>
+                            <td>      {{ claim.typeClaim }}    </td>
+
+                                                    <td>      {{ claim.status  ? 'Traité' : 'Non traité' }}    </td>
+                            <td>{{ claim.date | date: 'dd/MM/yy' }}</td>               
+
+               <td>           <button (click)="deleteClaim(claim.id)" class="btn btn-danger"><span class="bi bi-trash"></span></button>
+  
+     
+    <td>
+    <div class="form-check form-switch">
+        <input *ngIf="!claim.status" [disabled]="isUpdating" (click)="updateComplaintAndSendEmail(claim)"   (click)="onCheckboxClick($event)"class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+      </div>
+</td>
+
+                    </tr>
+                   
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

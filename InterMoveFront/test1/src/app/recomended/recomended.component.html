@@ -1,0 +1,16 @@
+
+<div class="container">
+<div class="card-container">
+    <h2>Recommended Courses</h2>
+<mat-card *ngFor="let course of list_reccourses" class="matcard">
+    <mat-card-header>
+      <mat-card-title>{{ course.name }}</mat-card-title>
+      <!-- <mat-card-subtitle>{{ course.coursedocument }}</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Display any additional information about the course here -->
+      <button [routerLink]="['/courses/detail',course.idCourse]"  (click)="close()" [mat-dialog-close]="true" mat-raised-button class="button" style="    background-color: #a31717;  color:white; margin-bottom: 8%;margin-top: 2px;">More<mat-icon>read_more</mat-icon></button>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>

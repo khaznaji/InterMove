@@ -1,0 +1,33 @@
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Responses</h1>
+        <div class="table-responsive">
+            <table class="table" style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>
+
+                        <th scope="col">#</th>
+                        <th scope="col">score</th>
+                        <th scope="col">status</th>
+                        <th scope="col">student</th>
+                        <th scope="col">score</th>
+                        <th scope="col">badge</th>
+                        <!-- <th scope="col">quiz id</th> -->
+                        <th scope="col">response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <tr *ngFor="let response of responses">
+                        <td> {{ response.id }} </td>
+                        <td> {{ response.score}} </td>
+                        <td> {{ response?.status }} </td>
+                        <td> {{ response?.student.firstname}} </td>
+                        <td> {{ response?.student.score}} </td>
+                        <td> {{ response?.student.badge}} </td>
+                        <td> <pre *ngFor="let studentResponses of response?.studentResponses">{{ studentResponses }}</pre> </td>                        
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>

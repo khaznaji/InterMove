@@ -1,0 +1,55 @@
+
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Tags</h1>
+        <hr>
+        <div class="table-responsive container"style="width: min-content;" >
+            <table class="table " style="color: rgb(107, 103, 103);">
+                <thead>
+                    <tr>  
+                      
+                     
+                        <th scope="col">nameTag</th>
+                       
+
+
+                      
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        
+                        <tr *ngFor="let tag of tags 
+                    let i = index">
+                            
+
+
+                           
+                              
+
+
+
+
+                  
+
+                            
+                            <td>      {{ tag.nameTag }}    </td>
+                          
+
+                          
+                          <td> <button (click)="deleteEvent(tag.idTags)" class="btn btn-danger">Delete</button>
+                           <td> <button (click)="updateOffer(tag.idTags)" class="btn btn-info" style="margin-left: 10px">Update</button></td>
+
+                                                        
+                                                      
+                                                          
+                   
+                   
+                </tbody>
+            </table>
+           
+            
+        </div>
+    </div>

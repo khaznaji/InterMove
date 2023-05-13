@@ -1,0 +1,66 @@
+
+    <!-- ***** Header Area End ***** -->
+ 
+    <!-- ***** Main Banner Area Start ***** -->
+    <section class="heading-page header-text" id="top">
+      <div class="container" class="contact-us">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>List Of My Complaints</h2>
+          </div>
+        </div>
+      </div>
+<div class="col-12" >
+    <div class=" rounded h-100 p-4">
+        <hr>
+        
+        <div class="table-responsive" >
+          
+            <table class="table" style="color: white;">
+                <thead>
+                    <tr>  
+                      
+                        <th scope="col">Objet</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">TypeClaim</th>
+
+
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr *ngFor="let claim of filteredComplaints">
+                            <td>      {{ claim.objet }}    </td>
+                            <td>      {{ claim.message }}    </td>
+                            <td><img src="assets/img/{{ claim.image  }}" style="width: 100px;"></td>
+                            <td>      {{ claim.typeClaim }}    </td>
+                                                    <td>      {{ claim.status  ? 'Traité' : 'Non traité' }}    </td>
+                            <td>{{ claim.date | date: 'dd/MM/yy' }}</td>
+                            <td> <button (click)="deleteClaim(claim.id)" class="btn btn-danger"><span class="bi bi-trash"></span></button>
+                                <td>
+                                    <button
+                                      (click)="updateComplaints(claim.id)"
+                                      class="btn btn-info"
+                                      style="margin-left: 10px"
+                                      [disabled]="claim.status === true"
+                                    >
+                                      <span class="bi bi-pencil-square"></span>
+                                    </button>
+                                  </td>
+
+
+                    </tr>
+                   
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</section>

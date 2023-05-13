@@ -1,0 +1,137 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentAgency.id" class="view">
+    <h4>Agency</h4>
+    <div>
+      <label><strong>Title:</strong></label> {{ currentAgency.name }}
+    </div>
+    <div>
+      <label><strong>Country:</strong></label>
+      {{ currentAgency.country }}
+    </div>
+    
+    <div>
+      <label><strong>Region:</strong></label>
+      {{ currentAgency.region }}
+    </div>
+    <div>
+      <label><strong>Address:</strong></label>
+      {{ currentAgency.adress }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/agencies/{{ currentAgency.id }}"
+    >
+    <p color="black">Edit</p>
+    </a>
+  </div>
+
+  <div *ngIf="!currentAgency">
+    <br />
+    <p>Please click on a Agency...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentAgency.id" class="edit-form">
+    <h4>Agency</h4>
+    <form>
+      <div class="form__group field">
+        <input
+          type="text"
+          class="form__field" placeholder="Name"
+          id="title"
+          [(ngModel)]="currentAgency.name"
+          name="title"
+        /><label for="title" class="form__label">Title</label>
+      </div>
+      <div class="form__group field">
+        <label for="description" class="form__label">Country</label><br>
+        <select
+        [formControl]="country"
+        name="country"
+        
+        [(ngModel)]="currentAgency.country"
+      >
+        <option *ngFor="let country of countries" [value]="country.shortName">
+          {{ country.name }}
+        </option>
+      </select>
+      <p *ngIf="country.hasError('required')"
+        >Please select a country.</p>
+      </div>
+      <div class="form__group field">
+        <label for="region" class="form__label">State</label><br>
+        <select
+        [formControl]="state"
+        name="region"
+        [(ngModel)]="currentAgency.region"
+      >
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+      <p *ngIf="state.hasError('required')">Please select a state.</p>
+      </div>
+      <div class="form__group field">
+        <label for="adress" class="form__label">City</label><br>
+        <select [formControl]="city" name="city" [(ngModel)]="currentAgency.adress">
+          <option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </option>
+        </select>
+        <p *ngIf="city.hasError('required')"
+          >Please select a city.</p>
+      </div>
+
+      <div class="form__group field">
+        <label for="title" class="form__label">About Us</label>
+        <textarea
+          type="text"
+          class="form__field" 
+          id="title"
+          required
+          [formControl]="aboutUs"
+          name="title"
+          [(ngModel)]="currentAgency.aboutUs"
+        >
+        </textarea>
+      </div>
+      
+    </form>
+    <!--
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentAgency.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentAgency.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+    -->
+
+    <button class="btn btn-outline-danger m-3" (click)="deleteAgency()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-outline-success "
+      (click)="updateAgency()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentAgency.id">
+    <br />
+    <p>Cannot access this Agency...</p>
+  </div>
+</ng-template>

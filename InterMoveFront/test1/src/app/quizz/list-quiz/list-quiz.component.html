@@ -1,0 +1,117 @@
+
+                <div class="row myrow">
+
+                    <form #quizForm="ngForm" (ngSubmit)="addOrEditeQuiz(quiz)">
+                        <h1 class="mb-4" style="color: rgb(107, 103, 103);">Add Quizz</h1>
+                        <hr>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" id="description" name="description" [(ngModel)]="quiz.description" class="form-control"
+                                required minlength="3" #thisdescription="ngModel">
+                            <div class="alert alert-danger" *ngIf="thisdescription.touched && thisdescription.invalid">
+                                <div *ngIf="thisdescription?.errors?.['required']">Description is required!</div>
+                                <div *ngIf="thisdescription.errors?.['minlength']">Description must have at least 3 characters.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="domain">Domain:</label>
+                            <select class="form-control" name="domain" [(ngModel)]="quiz.domain">
+                                <option class="option" *ngFor="let domain of domains" [value]="domain">{{domain}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom:</label>
+                            <input type="text" id="nom" name="nom" [(ngModel)]="quiz.nom" class="form-control" required minlength="3"
+                                #thisnom="ngModel">
+                            <div class="alert alert-danger" *ngIf="thisnom.touched && thisnom.invalid">
+                                <div *ngIf="thisnom.errors?.['required']">Nom is required!</div>
+                                <div *ngIf="thisnom.errors?.['minlength']">Nom must have at least 3 characters.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">etat:</label>
+                            <select class="form-control" name="etat" [(ngModel)]="quiz.etat">
+                                <option class="option" *ngFor="let etat of etats" [value]="etat">{{etat}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="score">Score:</label>
+                            <input type="number" id="score" name="score" [(ngModel)]="quiz.score" class="form-control" required min="0"
+                                #thisscore="ngModel">
+                            <div class="alert alert-danger" *ngIf="thisscore.touched && thisscore.invalid">
+                                <div *ngIf="thisscore.errors?.['required']">Score is required!</div>
+                                <div *ngIf="thisscore.errors?.['min']">Score must be at least 0.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="timelimit">timelimit:</label>
+                            <input type="number" id="score" name="timelimit" [(ngModel)]="quiz.timelimit" class="form-control" required min="0"
+                                #thistimelimit="ngModel">
+                            <div class="alert alert-danger" *ngIf="thistimelimit.touched && thistimelimit.invalid">
+                                <div *ngIf="thistimelimit.errors?.['required']">timelimit is required!</div>
+                                <div *ngIf="thistimelimit.errors?.['min']">timelimit must be at least 0.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary mybutton" [disabled]="quizForm.invalid">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12">
+                    <div class=" rounded h-100 p-4">
+                        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Quizzes</h1>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-responsive" style="color: rgb(107, 103, 103);">
+                                <thead>
+                                    <tr>
+                
+                                        <th scope="col">#</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col">domain</th>
+                                        <th scope="col">nom</th>
+                                        <th scope="col">etat</th>
+                                        <th scope="col">score</th>
+                                        <th scope="col">timelimit</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <tr *ngFor="let quiz of quizs">
+                                        <td> {{ quiz.id }} </td>
+                                        <td> {{ quiz.description }} </td>
+                                        <td> {{ quiz.domain }} </td>
+                                        <td> {{ quiz.nom }} </td>
+                                        <td> {{ quiz.etat }} </td>
+                                        <td> {{ quiz.score }} </td>
+                                        <td> {{ quiz.timelimit }} </td>
+                                        <td> <button (click)="editeQuiz(quiz)" class="btn btn-success">Edit</button>
+                                        </td>
+                                        <td> <button (click)="deleteQuiz(quiz.id)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row vh-100  rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-6 text-center">
+
+                    </div>
+                </div>
+            <!-- Blank End -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                
+            </div>
+            <!-- Footer End -->
+        <!-- Content End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

@@ -1,0 +1,102 @@
+<!-- <div class="container bg-secondary rounded h-100 p-5"[hidden]="submitted" style="width: 400px; background-color: black;">
+  <h2 style="color: aliceblue;">Add Claim</h2>
+
+  <form (ngSubmit)="onSubmit()" >    <label class="form-label" style="color: aliceblue;">Title</label>
+  <input type="text" class="form-control" id="firstName" required [(ngModel)]="events.objet" name="firstName">
+  
+  <label class="form-label" style="color: aliceblue;">Description</label>
+  <input type="text" class="form-control" id="firstName" required [(ngModel)]="events.message" name="firstName">
+
+  <label class="form-label" style="color: aliceblue;">Nom</label>
+  <input type="text" class="form-control"[(ngModel)]="events.image" name="dateF" required>
+
+  
+ 
+  <label class="form-label" style="color: aliceblue;">Type of CLaim</label>
+  <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example"[(ngModel)]="events.typeClaim" name="typeEvent" required>
+      <option>Technical</option>
+
+  </select>
+  
+
+  
+  <button class="btn btn-outline w-100 m-2" style="color: aliceblue;"type="submit">Save Claim</button>
+</form> -->
+<section class="contact-us" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 align-self-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="contact" action="" method="post"  (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h2>Let's get in touch</h2>
+                  </div>
+                  <label>Type Claim</label>                       <hr>
+  <select  [(ngModel)]="event.typeClaim" required>
+                      <option value="option1">Technical</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                    </select>
+                    <hr>
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Screenshot</label>
+                      <input type="file" class="form-control" id="firstName" required (change)="onFileSelected($event)" name="image">
+                    </div>
+                    
+                  <div class="col-lg-4">
+                    <fieldset>
+                    <input name="email" type="text" id="email" [(ngModel)]="event.objet" placeholder="Objet..." required="">
+                  </fieldset>
+                  </div>
+  
+  
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea name="message" type="text" [(ngModel)]="event.message" class="form-control" id="message" placeholder="YOUR MESSAGE..." required=""></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="right-info">
+            <ul>
+              <li>
+                <h6>Phone Number</h6>
+                <span>010-020-0340</span>
+              </li>
+              <li>
+                <h6>Email Address</h6>
+                <span>info@meeting.edu</span>
+              </li>
+              <li>
+                <h6>Street Address</h6>
+                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
+              </li>
+              <li>
+                <h6>Website URL</h6>
+                <span>www.meeting.edu</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved. 
+          <br>
+          Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+          <br>
+          Distibuted By: <a href="https://themewagon.com" target="_blank" title="Build Better UI, Faster">ThemeWagon</a>
+        </p>
+    </div>
+  </section>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logistic Regression</title>
+</head>
+<body>
+    <h1>Logistic Regression</h1>
+    <p>Train Score: {{ train_score }}</p>
+    <p>Test Score: {{ test_score }}</p>
+    <p>Classes: {{ classes }}</p>
+    <p>No. of iterations: {{ n_iter }}</p>
+    {% if plot %}
+<img src="data:image/png;base64,{{ plot }}" />
+{% endif %}
+
+</body>
+</html>

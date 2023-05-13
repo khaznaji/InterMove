@@ -1,0 +1,45 @@
+
+
+
+                <div class="container rounded h-100 p-4"[hidden]="submitted" style="width: 700px ">
+                    <h1 style="color: rgb(107, 103, 103);">Add Offer</h1>
+                    <hr>    <div  enctype="multipart/form-data">    <label>Title</label>
+    <input type="text" class="form-control" id="titre" required [(ngModel)]="offers.titre" name="titre">
+    
+    <label>Description</label>
+    <input type="text" class="form-control" id="description" required [(ngModel)]="offers.description" name="description">
+<br>
+    <label>Start Date</label>
+    <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="offers.datedebut" name="dateF" required>
+    <bs-datepicker #dp></bs-datepicker>
+<br>
+          <label>End Date</label>
+    <input type="text" class="form-control" [bsDatepicker]="dp" [(ngModel)]="offers.datefin" name="dateF" required>
+    <bs-datepicker #dp></bs-datepicker>
+  <br>
+    <label>Type Offer</label>
+    <select class="form-select mb-3" aria-label="Default select example"[(ngModel)]="offers.domain" name="domain" required>
+        <option>Informatique</option>
+        <option>Marketing</option>
+
+    </select>
+    <br>
+        <div class="submit-field">
+            <div class="keywords-container">
+                    <input type="text" class="form-control" placeholder="e.g. job title, responsibilites" [(ngModel)]="tagInput"/>
+                    <button class="btn btn-outline-primary w-10 m-2" (click)="addTags()">Add Tag</button>
+                <div class="keywords-list" style="margin-bottom: 1cm;">
+                        <div class="tag" *ngFor="let tag of tags" >
+                            <mat-checkbox id="{{tag.nameTag}}"  (change)="selectTag(tag,$event)">{{tag.nameTag}}</mat-checkbox>
+                        </div>
+                                    </div>
+                <div class="clearfix"></div>
+            </div>
+    
+        </div>
+    
+   
+    
+    <button class="btn btn-outline-primary w-100 m-2" type="submit" (click)="onSubmit()">Save Offer</button>
+
+    </div>

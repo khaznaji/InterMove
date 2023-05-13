@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-title><h2>Add Course</h2> </mat-card-title>
+    <hr class="hr" style="width: 80%;margin-left: auto;margin-right: auto;"/>
+
+<mat-card-content>
+    
+    <div >
+  <div class="input-group mb-3" >
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" style="margin-bottom: 10px;"  [(ngModel)]="inputLabel">
+  </div>
+  <label class="form-label" for="customFile">Upload the course</label>
+  <input type="file" class="form-control" id="customFile" style="margin-bottom: 10px;" />
+  <div class="col-xl-4">
+    <div class="submit-field">
+        <div class="keywords-container">
+                <input type="text" class="form-control" placeholder="e.g. job title, responsibilites" [(ngModel)]="tagInput"/>
+                <button class="btn btn-outline-primary w-10 m-2"  (click)="addTags()">Add tag</button>
+            <div class="keywords-list" style="margin-bottom: 1cm;">
+                    <div class="tag" *ngFor="let tag of tags" >
+                        <mat-checkbox id="{{tag.nameTag}}"  (change)="selectTag(tag,$event)">{{tag.nameTag}}</mat-checkbox>
+                    </div>
+                                </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>
+
+    <button mat-raised-button (click)="onsubmit()" class="button" class="btn btn-outline-primary w-100 m-2">Submit</button>  
+    <div class="alert alert-success" role="alert" *ngIf="showSucc">
+        This is a success alert—check it out!
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="showErr">
+        This is a danger alert—check it out!
+      </div>
+    </div>
+
+    
+
+</mat-card-content>
+</mat-card>
+
+  
+  

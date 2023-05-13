@@ -1,0 +1,83 @@
+
+
+<body>
+
+  <!-- Sub Header -->
+  <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-8">
+          <div class="left-content">
+            <p>This is an educational <em>Website</em> </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <div class="right-icons">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="index.html" class="logo">
+InterMove                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a routerLink="/front/feeds" routerLinkActive="active">Home</a></li>
+                          <li><a routerLink="/front/offer" routerLinkActive="active"> Offers</a></li>
+                          <li class="scroll-to-section"><a routerLink="/front/courses" routerLinkActive="active">Courses</a></li> 
+
+                          <li class="scroll-to-section"><a routerLink="/front/userQuiz" routerLinkActive="active">Quizzes</a></li>
+                        
+                          <li class="scroll-to-section"><a routerLink="/front/Houses" routerLinkActive="active">Accomodation</a></li> 
+
+                          <li class="scroll-to-section"><a routerLink="/front/listEvent" routerLinkActive="active">Events</a></li> 
+                          <li class="has-sub">
+                            <a href="javascript:void(0)">Complaints</a>
+                            <ul class="sub-menu">
+                                <li><a routerLink="/front/addComplaints" routerLinkActive="active">Add Claim</a></li>
+                                <li><a routerLink="/front/listComplaints" routerLinkActive="active">My Complaints</a></li>
+                  
+                              </ul>
+                        </li>
+                          <li class="scroll-to-section"><a routerLink="/front/candidacy" routerLinkActive="active">Candidacy</a></li> 
+
+                          <li *ngIf="isSignedin"> <a routerLink="/front" style="text-decoration: underline; cursor: pointer;"
+                            (click)="doSignout()">Signout</a></li>
+                        <li class="scroll-to-section"><a  *ngIf="!isSignedin" routerLink="/login" routerLinkActive="active">login</a></li>
+                              <li *ngIf="username"><a (click)="doSignout()" class="st-smooth-move">{{ username }}</a></li>
+</ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+
+
+
+  <router-outlet></router-outlet>
+
+ 
+</body>
+

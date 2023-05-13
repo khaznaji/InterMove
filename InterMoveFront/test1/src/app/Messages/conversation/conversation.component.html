@@ -1,0 +1,38 @@
+<div class="conversation-bubble" (click)="onClick()">
+  <span class="bubble-icon">
+    <i class="fa fa-comments"></i>
+  </span>
+  <div class="user-bubbles" *ngIf="showUserBubbles && users">
+    <div class="user-bubble" *ngFor="let user of users | async" >
+      <img src="assets/img/user.jpg" alt="User Photo"  class="user-photo" (click)="onUserSelected(user)">
+    </div>
+  </div>
+</div>
+
+  <div class="chat-box" *ngIf="showConversation && selectedUser">
+    <div class="chat-box-header">
+      <h3>{{selectedUser}} {{selectedUser}}</h3>
+      <button class="close-btn" (click)="closeChatBox()">X</button>
+    </div>
+
+    <div class="chat-box-body" *ngIf="messages">
+      <ng-container *ngFor="let m of messages | async">
+      <div class="message message-sent" *ngIf="m.receiver.userid===1">
+          <p class="message-body">{{m.content}}</p>
+          <p class="message-timestamp">{{m.sent_at | date: 'dd/MM/yy hh:mm'}}</p>
+        </div>
+        <div class="message message-received"*ngIf="m.receiver.userid===selectedUser" >
+          <p class="message-body">{{m.content}}</p>
+          <p class="message-timestamp">{{m.sent_at | date: 'dd/MM/yy hh:mm'}}</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="chat-box-footer">
+      <form>
+        <input type="text" placeholder="Type a message..."  [(ngModel)]="newMessageContent" [ngModelOptions]="{standalone: true}">
+
+        <button type="submit" (click)="createNewMessage(selectedUser)" >Send</button>
+      </form>
+    </div>
+  </div>
+

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knn Classifier</title>
+</head>
+<body>
+    <h1>Knn Classifier</h1>
+    <p>Train Score: {{ train_score }}</p>
+    <p>Test Score: {{ test_score }}</p>
+    {% if img_b64 %}
+    <img src="data:image/png;base64,{{ img_b64 }}" alt="KNN Classifier Performance">
+{% endif %}
+
+</body>
+</html>

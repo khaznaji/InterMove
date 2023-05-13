@@ -1,0 +1,73 @@
+
+<div class="col-12">
+    <div class=" rounded h-100 p-4">
+        <h1 class="mb-4" style="color: rgb(107, 103, 103);">List Of Events</h1>
+        <hr>
+        <a style="color: rgb(122, 124, 129);" routerLink="/addEvent" routerLinkActive="active" class="nav-item nav-link" data-bs-toggle="dropdown"><i class="fa fa-calendar"></i> Add Events</a>
+
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>  
+                      
+                        <th scope="col" style="color: rgb(107, 103, 103);">#</th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Title</th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Type </th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Nbr.Place </th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Modalite </th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Image</th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">Description</th>
+
+                        <th scope="col" style="color: rgb(107, 103, 103);"> D.Fin</th>
+                        <th scope="col" style="color: rgb(107, 103, 103);"> D.Debut</th>
+                        <th scope="col" style="color: rgb(107, 103, 103);">QrCode</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr *ngFor="let event of events | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index ">
+                            <td style="color: rgb(107, 103, 103);">      {{ event.id }}    </td>
+                            <td style="color: rgb(107, 103, 103); max-width: 150px; word-wrap: break-word;">{{ event.title }}</td>
+                            <td style="color: rgb(107, 103, 103);">      {{ event.typeEvent }}    </td>
+                            <td style="color: rgb(107, 103, 103);">      {{ event.nbreDePlaces }}    </td>
+                            <td style="color: rgb(107, 103, 103);">      {{ event.modaliteEvent }}    </td>
+                                    <td><img src="assets/img/{{ event.image }}" width="100"></td>
+
+
+                                    <td style="color: rgb(107, 103, 103); max-width: 150px; word-wrap: break-word;">{{ event.description }}</td>
+                                    <td style="color: rgb(107, 103, 103);">{{ event.dateF | date: 'dd/MM/yy' }}</td>
+                            <td style="color: rgb(107, 103, 103);">{{ event.dateD | date: 'dd/MM/yy' }}</td>
+                            <td style="color: rgb(107, 103, 103);"><img src="assets/{{ event.speaker }}" width="100"></td>
+
+
+                            <td> <button class="bi bi-trash" (click)="deleteEvents(event.id)" class="btn btn-danger"><span class="bi bi-trash"></span></button>
+                          </td>
+                          <td> <button (click)="updateEvent(event.id)" class="btn btn-info" style="margin-left: 10px"><span class='bi bi-pencil-square'></span></button>
+                          </td>  
+                          <!-- <td><button (click)="affecterUserToEvent(1, event.id)">Affecter l'utilisateur à l'événement</button>
+                          </td> -->
+                    </tr>
+                   
+                </tbody>
+
+            </table>
+            <div class="d-flex justify-content-center">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+              </div>
+        </div>
+    </div>
+</div>
